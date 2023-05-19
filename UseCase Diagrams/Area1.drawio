@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-10T13:28:29.110Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="-yNiIVL992kp8W7dTX8c" version="21.2.9" type="device">
+<mxfile host="Electron" modified="2023-05-19T08:38:46.219Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="7cax4bIUXX2SiV7Fr4kp" version="21.2.8" type="device">
   <diagram id="zPgXatKTS2_6QT1FmWf5" name="Page-1">
-    <mxGraphModel dx="1221" dy="1789" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1658" dy="1989" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -93,22 +93,25 @@
             <mxPoint x="449.9999999999975" y="-827" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="luQg_b6hn7esnuwAU-_K-27" value="Notifica necessario rifornimento" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=16;verticalAlign=top;align=center;" parent="1" vertex="1">
-          <mxGeometry x="740.02" y="-845" width="120" height="60" as="geometry" />
+        <mxCell id="luQg_b6hn7esnuwAU-_K-27" value="Al raggiungimento della soglia minima" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=16;verticalAlign=top;align=center;" parent="1" vertex="1">
+          <mxGeometry x="883" y="-845" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="luQg_b6hn7esnuwAU-_K-28" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="luQg_b6hn7esnuwAU-_K-24" target="luQg_b6hn7esnuwAU-_K-27" edge="1">
+        <mxCell id="luQg_b6hn7esnuwAU-_K-28" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" target="luQg_b6hn7esnuwAU-_K-27" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="660" y="-787.5" as="sourcePoint" />
-            <mxPoint x="710" y="-837.5" as="targetPoint" />
+            <mxPoint x="790" y="-815" as="sourcePoint" />
+            <mxPoint x="852.98" y="-837.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="822.98" y="-815" />
+            </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="luQg_b6hn7esnuwAU-_K-29" value="Notifica deterioramento scorte" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=18;verticalAlign=top;align=center;" parent="1" vertex="1">
-          <mxGeometry x="740.02" y="-770" width="120" height="70" as="geometry" />
+        <mxCell id="luQg_b6hn7esnuwAU-_K-29" value="Al raggiungimento della data di deterioramento" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=14;verticalAlign=top;align=center;" parent="1" vertex="1">
+          <mxGeometry x="883" y="-770" width="120" height="70" as="geometry" />
         </mxCell>
         <mxCell id="luQg_b6hn7esnuwAU-_K-30" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" target="luQg_b6hn7esnuwAU-_K-29" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="647.02" y="-735" as="sourcePoint" />
-            <mxPoint x="710.02" y="-757.5" as="targetPoint" />
+            <mxPoint x="790" y="-732.5" as="sourcePoint" />
+            <mxPoint x="853" y="-755" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="luQg_b6hn7esnuwAU-_K-31" value="Visualizzazione dettaglio ordine" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -147,7 +150,7 @@
         <mxCell id="luQg_b6hn7esnuwAU-_K-38" value="Controllo data di scadenza" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="420" y="-712.5" width="65" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="luQg_b6hn7esnuwAU-_K-39" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=classic;endFill=1;dashed=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" edge="1" target="luQg_b6hn7esnuwAU-_K-38">
+        <mxCell id="luQg_b6hn7esnuwAU-_K-39" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=classic;endFill=1;dashed=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" target="luQg_b6hn7esnuwAU-_K-38" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="365" y="-680" as="sourcePoint" />
             <mxPoint x="315" y="-630" as="targetPoint" />
@@ -259,6 +262,26 @@
             <mxPoint x="139" y="-700" as="sourcePoint" />
             <mxPoint x="235" y="-670" as="targetPoint" />
             <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_1Ns5f9YXBKYXy0fDvXW-1" value="Notifica necessario rifornimento" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="735.29" y="-850" width="75" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="_1Ns5f9YXBKYXy0fDvXW-3" value="Notifica deterioramento scorte" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="744" y="-767.98" width="82.98" height="82.98" as="geometry" />
+        </mxCell>
+        <mxCell id="_1Ns5f9YXBKYXy0fDvXW-5" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="_1Ns5f9YXBKYXy0fDvXW-1" target="luQg_b6hn7esnuwAU-_K-24" edge="1">
+          <mxGeometry x="0.0684" y="-2" width="160" relative="1" as="geometry">
+            <mxPoint x="720" y="-812" as="sourcePoint" />
+            <mxPoint x="647.02" y="-817.5" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kg7I2imR8khI-Hh-4pdb-1" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="endArrow=open;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.985;entryY=0.629;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="_1Ns5f9YXBKYXy0fDvXW-3" target="luQg_b6hn7esnuwAU-_K-22">
+          <mxGeometry x="-0.0723" y="3" width="160" relative="1" as="geometry">
+            <mxPoint x="720" y="-732" as="sourcePoint" />
+            <mxPoint x="650" y="-740" as="targetPoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
