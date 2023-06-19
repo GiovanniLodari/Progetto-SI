@@ -8,11 +8,14 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 @Service
-public class DipendenteService {
-    @Autowired
+public class DipendenteService{
     DipendenteRepository dipendenteRepository;
+    @Autowired
+    public DipendenteService(DipendenteRepository dipendenteRepository){
+        this.dipendenteRepository = dipendenteRepository;
+    }
 
-    public Dipendente creaDipendente(String CF, int codiceBadge,String nome, String cognome, String IBAN, String residenza, String ruolo, Date dataN){
+    public Dipendente creaDipendente(String CF, int codiceBadge,String nome, String cognome, String IBAN, String residenza, String ruolo, Date dataN) {
         Dipendente dipendente = new Dipendente();
         dipendente.setCF(CF);
         dipendente.setCodiceBadge(codiceBadge);
@@ -22,6 +25,20 @@ public class DipendenteService {
         dipendente.setResidenza(residenza);
         dipendente.setRuolo(ruolo);
         dipendente.setDataN(dataN);
-        return dipendente;
+        return dipendenteRepository.save(dipendente);
+    }
+
+    public String getRoleByBadgeCode(String badgeCode) {
+        if (badgeCode.equals("001")) {
+            return "titolare";
+        } else if (badgeCode.equals("002")) {
+            return "socio";
+        } else if (badgeCode.equals("003")) {
+            return "addettoBar";
+        } else if (badgeCode.equals("004")) {
+            return "addettoChiosco";
+        } else {
+            return "ruolo_non_trovato";
+        }
     }
 }

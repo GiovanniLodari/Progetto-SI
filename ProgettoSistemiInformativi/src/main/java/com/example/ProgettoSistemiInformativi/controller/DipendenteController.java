@@ -1,31 +1,47 @@
 package com.example.ProgettoSistemiInformativi.controller;
 
-import com.example.ProgettoSistemiInformativi.entity.Dipendente;
+import com.example.ProgettoSistemiInformativi.repository.DipendenteRepository;
 import com.example.ProgettoSistemiInformativi.services.DipendenteService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Map;
-
-@RestController
+@Controller
 public class DipendenteController {
-    @Autowired
-    DipendenteService dipendenteService;
+    private final DipendenteRepository dipendenteRepository;
+    private final DipendenteService dipendenteService;
 
-    @PostMapping(value = "/loginDipendente")
-    public ModelAndView register(@RequestParam Map<String,String> mappa, HttpServletResponse res, HttpServletRequest req, Dipendente d){
-        HttpSession session=req.getSession();
-        session.setAttribute("dipendente", mappa.get("CF"));
-        ModelAndView m1 = new ModelAndView("/login");
-        dipendenteService.creaDipendente(d.getCF(), d.getCodiceBadge(), d.getNome(), d.getCognome(), d.getIBAN(), d.getResidenza(), d.getRuolo(), d.getDataN());
-        return m1;
+    @Autowired
+    public DipendenteController(DipendenteRepository repository, DipendenteService service) {
+        dipendenteRepository = repository;
+        dipendenteService = service;
+    }
+
+    @GetMapping("/accessoDipendenti")
+    public ModelAndView showLoginForm() {
+        ModelAndView modelAndView = new ModelAndView("accessoDipendenti");
+        return modelAndView;
+    }
+    @PostMapping("/accessoDipendenti")
+    @ResponseBody
+    public ResponseEntity<String> verificaCodiceBadge(@RequestParam("codiceBadge") int codiceBadge) {
+        if (dipendenteRepository.existsByCodiceBadge(codiceBadge)) {
+            return ResponseEntity.ok("Accesso riuscito");
+        } else {
+            return ResponseEntity.badRequest().body("Codice badge non valido");
+        }
+    }
+
+    @GetMapping("/areaPersonale")
+    public ModelAndView areaPersonale(@RequestParam("badgeCode") String badgeCode) {
+        ModelAndView model = new ModelAndView("areaPersonale");
+        String userRole = dipendenteService.getRoleByBadgeCode(badgeCode);
+        model.addObject("userRole", userRole);
+        return model;
     }
 }

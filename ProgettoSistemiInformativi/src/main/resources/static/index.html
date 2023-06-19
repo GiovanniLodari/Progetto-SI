@@ -1,44 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home del Cinema</title>
-    <link rel="stylesheet" type="text/css" href="homeStyle.css"> <!-- Collegamento a un file CSS esterno (opzionale) -->
+    <link rel="stylesheet" type="text/css" href="homeStyle.css">
 </head>
 <body>
 <header>
     <h1>Benvenuti al Cinema 2.0</h1>
 </header>
 <div class="header">
-    <!--<h1>Benvenuti nella gestione della vetrina del cinema</h1>-->
     <div class="navigation">
-        <a href="#">Museo</a>
-        <a href="#">Abbonamenti</a>
-        <a href="#">Convenzioni</a>
-        <a href="#">Navetta</a>
-        <div class="search-icon">
-            <img src="images/lenteDiRicerca.png" alt="Search Icon">
+        <div class="navigation-container">
+            <a href="#">Museo</a>
+            <a href="#">Abbonamenti</a>
+            <a href="#">Convenzioni</a>
+            <a href="#">Navetta</a>
+            <div class="search-flied">
+                <input type="text" class="search-field" placeholder="Cerca">
+            </div>
         </div>
         <div class="button-wrapper">
             <button class="login-button">Log-In</button>
             <button class="signup-button">Sign-Up</button>
-            <button class="personal-area-button">Area Personale</button>
+            <a class="personal-area-button" href="accessoDipendenti.html">Area Personale</a>
         </div>
     </div>
 </div>
 <section>
     <h2>Scopri le nostre ultime proiezioni e prenota il tuo posto</h2>
-    <div class="film-gallery">
-        <img src="percorso_immagine1.jpg" alt="Film 1">
-        <img src="percorso_immagine2.jpg" alt="Film 2">
-        <img src="percorso_immagine3.jpg" alt="Film 3">
-        <!-- aggiungi ulteriori immagini -->
+    <div class="film-list">
+        <div class="film-gallery">
+            <div class="film">
+                <img src="LocandinaAvatar.jpg" alt="Avatar">
+                <h4>Avatar</h4>
+            </div>
+            <div class="film">
+                <img src="LocandinaCastAway.jpg" alt="Cast Away">
+                <h4>Cast Away</h4>
+            </div>
+            <div class="film">
+                <img src="LocandinaJaws.jpg" alt="Jaws">
+                <h4>Jaws</h4>
+            </div>
+        </div>
     </div>
+
     <h2>Scopri le nostre prossime uscite</h2>
     <div class="film-gallery">
-        <img src="percorso_immagine1.jpg" alt="Film 1">
-        <img src="percorso_immagine2.jpg" alt="Film 2">
-        <img src="percorso_immagine3.jpg" alt="Film 3">
-        <!-- aggiungi ulteriori immagini -->
+        <div class="film">
+            <img src="LocandinaBohemianRhapsody.jpg" alt="Bohemian Rhapsody">
+            <h4>Bohemian Rhapsody</h4>
+        </div>
+        <div class="film">
+            <img src="LocandinaJoker.jpg" alt="Joker">
+            <h4>Joker</h4>
+        </div>
+        <div class="film">
+            <img src="LocandinaUncharted.jpeg" alt="Uncharted">
+            <h4>Uncharted</h4>
+        </div>
     </div>
 </section>
 
@@ -47,3 +67,4 @@
 </footer>
 </body>
 </html>
+

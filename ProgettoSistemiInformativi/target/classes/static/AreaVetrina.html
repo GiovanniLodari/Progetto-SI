@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Gestione area vetrina</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: left;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+    }
+
+    .button {
+        display: block;
+        width: 200px;
+        padding: 10px;
+        margin: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+    </style>
+    <script>
+    function addBadgeCodeToURL(url) {
+            var badgeCode = getBadgeCodeFromURL();
+            if (url.includes('?')) {
+                url += '&badgeCode=' + badgeCode;
+            } else {
+                url += '?badgeCode=' + badgeCode;
+            }
+            return url;
+        }
+
+        function redirectToPage(url) {
+            url = addBadgeCodeToURL(url);
+            window.location.href = url;
+        }
+
+        function getBadgeCodeFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('badgeCode');
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var buttons = document.querySelectorAll('.button');
+            buttons.forEach(function (button) {
+                button.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    var url = button.getAttribute('href');
+                    redirectToPage(url);
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+<h1>Gestione area vetrina</h1>
+<div class="button-container">
+    <a href="cassa.html" class="button">Cassa</a>
+    <a href="elencoProdotti.html" class="button">Elenco prodotti</a>
+    <a href="elencoPromozioni.html" class="button">Promozioni</a>
+    <a href="------------------" class="button">Inserisci prodotti prelevati</a>
+    <a href="areaPersonale.html" class="button">Torna alla tua area personale</a>
+</div>
+</body>
+</html>
