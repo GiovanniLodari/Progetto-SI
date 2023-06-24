@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dettagli Prodotto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .details {
+      margin-top: 20px;
+    }
+
+    .details p {
+      margin-bottom: 10px;
+    }
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+    }
+    .button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+  <script>
+    function getProductDetails() {
+      var badgeCode = getBadgeCodeFromURL();
+      var productId = getProductIdFromURL();
+      var url = `/dettagli-prodotto?badgeCode=${badgeCode}&productId=${productId}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(product => {
+          if (product) {
+            document.getElementById('productBarCode').textContent = product.codiceBarre;
+            document.getElementById('productPrice').textContent = product.prezzo;
+            document.getElementById('productQuantity').textContent = product.quantita;
+            document.getElementById('min').textContent = product.min;
+            document.getElementById('max').textContent = product.max;
+          } else {
+            console.error('Il prodotto non esiste o non è disponibile');
+          }
+        })
+        .catch(error => {
+          console.error('Errore nel recupero dei dettagli del prodotto:', error);
+        });
+    }
+
+    function getBadgeCodeFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('badgeCode');
+    }
+
+    function getProductIdFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('productId');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      getProductDetails();
+    });
+
+    function goBack() {
+      var badgeCode = getBadgeCodeFromURL();
+      var url = 'elencoProdotti.html?badgeCode=' + badgeCode;
+      window.location.href = url;
+    }
+
+    function deleteProduct() {
+      var productId = getProductIdFromURL();
+      var url = `/elimina-prodotto?productId=${productId}`;
+
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({ delete: true }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            console.log('Prodotto eliminato con successo');
+            var badgeCode = getBadgeCodeFromURL();
+            var url = 'elencoProdotti.html?badgeCode=' + badgeCode;
+            window.location.href = url;
+          } else {
+            console.log('Errore durante l\'eliminazione del prodotto');
+          }
+        })
+        .catch(error => {
+          console.error('Errore durante la richiesta di eliminazione del prodotto:', error);
+        });
+    }
+
+    function openModal(productId) {
+      var modal = document.getElementById("modal");
+      modal.style.display = "block";
+
+      // Recupera le soglie attuali del prodotto e popola i campi input
+      var product = getProductById(productId);
+      document.getElementById("minThreshold").value = product.minThreshold;
+      document.getElementById("maxThreshold").value = product.maxThreshold;
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("modal");
+      modal.style.display = "none";
+    }
+
+    function saveThresholds() {
+      var minThreshold = document.getElementById("minThreshold").value;
+      var maxThreshold = document.getElementById("maxThreshold").value;
+      var productId = getProductIdFromURL();
+      var data = new URLSearchParams();
+      data.append('minThreshold', minThreshold);
+      data.append('maxThreshold', maxThreshold);
+      var url = `/dettagli-prodotto?productId=${productId}`;
+      fetch(url, {
+        method: "POST",
+        body: data
+      })
+        .then(response => {
+          if (response.ok) {
+            console.log("Soglie del prodotto aggiornate con successo");
+            getProductDetails();
+          } else {
+            console.log("Errore durante il salvataggio delle soglie del prodotto");
+          }
+        })
+        .catch(error => {
+          console.error("Errore durante la richiesta di aggiornamento delle soglie del prodotto:", error);
+        });
+      closeModal();
+    }
+
+    function redirectToStats() {
+      var badgeCode = getBadgeCodeFromURL();
+      var productId = getProductIdFromURL();
+      var url = 'statisticheProdotto.html?badgeCode='+badgeCode+'&productId='+productId;
+      window.location.href = url;
+    }
+
+  </script>
+</head>
+<body>
+<h1>Dettagli Prodotto</h1>
+<div class="details">
+  <p><strong>Codice a barre:</strong> <span id="productBarCode"></span></p>
+  <p><strong>Prezzo:</strong> <span id="productPrice"></span></p>
+  <p><strong>Quantita' disponibile:</strong> <span id="productQuantity"></span></p>
+  <p><strong>Soglia minima:</strong> <span id="min"></span></p>
+  <p><strong>Soglia massima:</strong> <span id="max"></span></p>
+</div>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h2>Modifica soglie prodotto</h2>
+    <label for="minThreshold">Soglia Min:</label>
+    <input type="number" id="minThreshold" name="minThreshold" required>
+    <label for="maxThreshold">Soglia Max:</label>
+    <input type="number" id="maxThreshold" name="maxThreshold" required>
+    <button onclick="saveThresholds()">Salva</button>
+    <button onclick="closeModal()">Annulla</button>
+  </div>
+</div>
+<button class="button" onclick="goBack()">Torna Indietro</button>
+<button class="details-button" onclick="deleteProduct()">Elimina</button>
+<button class="button" onclick="redirectToStats()">Statistiche</button>
+</body>
+</html>

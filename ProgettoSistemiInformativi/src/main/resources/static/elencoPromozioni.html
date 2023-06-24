@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Elenco Promozioni</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .promo-list {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      padding-right: 200px;
+    }
+
+    .button-container {
+      text-align: right;
+      flex: 0 0 auto;
+    }
+
+    .showcase-button,
+    .stats-button,
+    .add-button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    .button-container .showcase-button:hover,
+    .button-container .stats-button:hover,
+    .button-container .add-button:hover {
+      background-color: #3e8e41;
+    }
+
+    .details-button {
+      background-color: #008CBA;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .details-button:hover {
+      background-color: #006080;
+    }
+  </style>
+  <script>
+    function loadPromos() {
+      var badgeCode = getBadgeCodeFromURL();
+      var url = '/elencoPromozioni?badgeCode=' + badgeCode;
+      fetch(url)
+        .then(response => response.json())
+        .then(promos => {
+          var promoList = document.getElementById('promoList');
+          promoList.innerHTML = '';
+
+          promos.forEach(promo => {
+            var listItem = document.createElement('li');
+
+            // Visualizza l'ID della promozione
+            var promoId = document.createTextNode("ID: " + promo.id);
+            listItem.appendChild(promoId);
+
+            // Visualizza il prezzo della promozione
+            var promoPrezzo = document.createElement('p');
+            promoPrezzo.textContent = "Prezzo: " + promo.prezzo;
+            listItem.appendChild(promoPrezzo);
+
+            var detailsButton = document.createElement('button');
+            detailsButton.textContent = "Dettagli";
+            detailsButton.addEventListener('click', function () {
+              redirectToProductDetails(promo.id);
+            });
+            listItem.appendChild(detailsButton);
+
+            promoList.appendChild(listItem);
+          });
+        })
+        .catch(error => {
+          console.error('Errore nel recupero delle promozioni:', error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      loadPromos();
+    });
+
+    function addBadgeCodeToURL(url) {
+      var badgeCode = getBadgeCodeFromURL();
+      if (!url.includes('?')) {
+        url += '?badgeCode=' + badgeCode;
+      }
+      return url;
+    }
+
+    function redirectToPage(url) {
+      url = addBadgeCodeToURL(url);
+      window.location.href = url;
+    }
+
+    function getBadgeCodeFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('badgeCode');
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var buttons = document.querySelectorAll('.button');
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function (event) {
+          event.preventDefault();
+          var url = button.getAttribute('href');
+          redirectToPage(url);
+        });
+      });
+    });
+
+    function redirectToProductDetails(promoId) { /* Cambiato 'productId' in 'promoId' */
+      var badgeCode = getBadgeCodeFromURL();
+      var url = 'dettagli-promozione.html?badgeCode=' + badgeCode + '&promoId=' + promoId;
+      window.location.href = url;
+    }
+
+    function redirectToAddProduct() {
+      var badgeCode = getBadgeCodeFromURL();
+      var url = 'inserisci_promozione.html?badgeCode=' + badgeCode;
+      window.location.href = url;
+    }
+
+    function redirectToAreaVetrina() {
+      var badgeCode = getBadgeCodeFromURL();
+      var url = '/areaVetrina?badgeCode=' + badgeCode;
+      fetch(url, {
+        method: 'GET',
+      }).then(response => {
+        if (response.ok) {
+          var newURL = 'AreaVetrina.html?badgeCode=' + badgeCode;
+          window.location.href = newURL;
+        } else {
+          console.log('Errore nella richiesta al controller');
+        }
+      }).catch(error => {
+        console.log('Errore nella richiesta al controller', error);
+      });
+    }
+  </script>
+</head>
+<body>
+<div class="container">
+  <div class="promo-list">
+    <h1>Elenco Promozioni</h1>
+    <div class="button-container">
+      <button type="button" class="showcase-button" onclick="redirectToAreaVetrina()">Area Vetrina</button>
+      <div class="button-container">
+        <button class="add-button" onclick="redirectToAddProduct()">Aggiungi</button>
+      </div>
+    </div>
+    <ul id="promoList"></ul>
+  </div>
+</div>
+</body>
+</html>

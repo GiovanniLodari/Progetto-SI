@@ -1,0 +1,212 @@
+<mxfile host="app.diagrams.net" modified="2023-04-28T15:14:18.141Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="UHpv36ZuCRTdR3CkqrXk" version="21.2.3" type="device">
+  <diagram id="ql5Kk59QJ9DEcHVxNvi2" name="Page-1">
+    <mxGraphModel dx="749" dy="785" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZD2BOli1PRJFR32QjBVF-1" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" parent="1" vertex="1">
+          <mxGeometry x="340" y="90" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZD2BOli1PRJFR32QjBVF-2" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" parent="1" source="ZD2BOli1PRJFR32QjBVF-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="355" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZD2BOli1PRJFR32QjBVF-3" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" parent="1" vertex="1">
+          <mxGeometry x="335" y="1169" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ZD2BOli1PRJFR32QjBVF-6" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#000000;strokeColor=none;rotation=-90;" parent="1" vertex="1">
+          <mxGeometry x="352.5" width="5" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-1" value="Titolare/Socio" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="325" y="50" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-2" value="Personale" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="670" y="50" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-4" value="Annotazione ore giornaliere di ciascun dipendente" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-5" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="215" y="220" as="targetPoint" />
+            <mxPoint x="215" y="170" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-6" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="499.6600000000001" y="220" as="targetPoint" />
+            <mxPoint x="499.6600000000001" y="170" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-7" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="354.5" y="220" as="targetPoint" />
+            <mxPoint x="354.5" y="170" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-8" value="Annotazione ferie richieste di ciascun dipendente" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="295" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-9" value="Annotazione giorni liberi di ciascun dipendente" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-10" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="210" y="325" as="targetPoint" />
+            <mxPoint x="209.66" y="280" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-19" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#000000;strokeColor=none;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="360" y="150" width="5" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-20" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=1.281;entryY=0.473;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="B_NjDcY1VaNUvY9v65GC-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="353" y="320" as="targetPoint" />
+            <mxPoint x="353" y="280" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-21" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=1.109;entryY=0.877;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.483;exitY=0.992;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="B_NjDcY1VaNUvY9v65GC-9" target="B_NjDcY1VaNUvY9v65GC-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="560" as="targetPoint" />
+            <mxPoint x="500" y="280" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-22" value="Redazione calendario provvisorio" style="rounded=1;whiteSpace=wrap;html=1;direction=west;" vertex="1" parent="1">
+          <mxGeometry x="295" y="380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-23" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="352.84000000000003" y="380" as="targetPoint" />
+            <mxPoint x="352.5" y="335" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-24" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="315" y="480" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-25" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B_NjDcY1VaNUvY9v65GC-24" target="B_NjDcY1VaNUvY9v65GC-27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="520" as="targetPoint" />
+            <mxPoint x="500" y="510" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-26" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="355" y="480" as="targetPoint" />
+            <mxPoint x="354.61" y="440" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-27" value="Organizzazione dei turni tra i dipendenti" style="rounded=1;whiteSpace=wrap;html=1;direction=west;" vertex="1" parent="1">
+          <mxGeometry x="640" y="490" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-28" value="[Cambio turno]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="470" y="490" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-29" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700.39" y="590" as="targetPoint" />
+            <mxPoint x="700" y="550" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-30" value="Comunicazione al titolare" style="rounded=1;whiteSpace=wrap;html=1;direction=west;" vertex="1" parent="1">
+          <mxGeometry x="640" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-32" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="315" y="580" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-35" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B_NjDcY1VaNUvY9v65GC-24" target="B_NjDcY1VaNUvY9v65GC-32">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295.39" y="560" as="targetPoint" />
+            <mxPoint x="295" y="520" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="290" y="520" />
+              <mxPoint x="290" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-36" value="[Assenza di cambio turno]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="225" y="560" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-37" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B_NjDcY1VaNUvY9v65GC-30" target="B_NjDcY1VaNUvY9v65GC-32">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="559.46" y="650" as="targetPoint" />
+            <mxPoint x="559.0699999999999" y="610" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-40" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="354.91999999999996" y="700" as="targetPoint" />
+            <mxPoint x="354.53" y="660" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-41" value="Redazione calendario definitivo" style="rounded=1;whiteSpace=wrap;html=1;direction=west;" vertex="1" parent="1">
+          <mxGeometry x="295" y="700" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-42" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=0.545;exitY=-0.052;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="B_NjDcY1VaNUvY9v65GC-41">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="349.94999999999993" y="810" as="targetPoint" />
+            <mxPoint x="349.55999999999995" y="770" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-43" value="Calcolo stipendio di ciascun dipendente" style="rounded=1;whiteSpace=wrap;html=1;direction=west;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1060" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-44" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="810" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-45" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="B_NjDcY1VaNUvY9v65GC-44" target="B_NjDcY1VaNUvY9v65GC-46">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230.34" y="890" as="targetPoint" />
+            <mxPoint x="230" y="845" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-46" value="Annotazione ritardo/permesso" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="870" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-47" value="[assenza di ritardi/permessi]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="330" y="900" width="176" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-48" value="[presenza di ritardi/permessi]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="820" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-49" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="930" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-50" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="B_NjDcY1VaNUvY9v65GC-46" target="B_NjDcY1VaNUvY9v65GC-49">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="980" as="targetPoint" />
+            <mxPoint x="280" y="960" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-51" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="B_NjDcY1VaNUvY9v65GC-49">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="890" as="targetPoint" />
+            <mxPoint x="390" y="850" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="410" y="850" />
+              <mxPoint x="410" y="970" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-52" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=0.545;exitY=-0.052;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="349.7099999999999" y="1057" as="targetPoint" />
+            <mxPoint x="349.76" y="1010" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-54" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;exitX=0.545;exitY=-0.052;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="349.7099999999999" y="1169" as="targetPoint" />
+            <mxPoint x="349.76" y="1122" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B_NjDcY1VaNUvY9v65GC-55" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="1200" as="sourcePoint" />
+            <mxPoint x="600" y="40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

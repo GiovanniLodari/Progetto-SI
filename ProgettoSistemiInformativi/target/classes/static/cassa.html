@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registratore di cassa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .calculator {
+      display: flex;
+      align-items: flex-start;
+      width: 800px;
+      margin: 0 auto;
+    }
+
+    .numeric-keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      margin-right: 20px;
+    }
+
+    .numeric-keypad button {
+      width: 100%;
+      padding: 20px;
+      font-size: 16px;
+      background-color: #d3d3d3;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .input-field {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .input-field input[type="text"] {
+      flex: 1;
+      margin-right: 10px;
+      padding: 15px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .button {
+      padding: 20px 40px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .button.blue {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .right-column {
+      flex: 1;
+    }
+
+    .right-column p {
+      margin-left: 10px;
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      padding-right: 200px;
+    }
+
+    .total {
+      margin-top: 20px;
+      margin-left: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    #itemsList {
+      width: 175%;
+    }
+
+    .showcase-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .buttons-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .buttons-column button {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="buttons-column">
+  <button class="button" onclick="clearItemList()">Cancella scontrino</button>
+  <button class="button" onclick="addItem()">Aggiungi</button>
+  <button class="button" onclick="pay()">Paga</button>
+</div>
+<div class="calculator">
+  <div class="input-field">
+    <input type="text" id="barcodeInput" placeholder="Codice a barre" readonly>
+  </div>
+  <div class="numeric-keypad">
+    <button class="numeric-key" onclick="addNumber('1')">1</button>
+    <button class="numeric-key" onclick="addNumber('2')">2</button>
+    <button class="numeric-key" onclick="addNumber('3')">3</button>
+    <button class="numeric-key" onclick="addNumber('4')">4</button>
+    <button class="numeric-key" onclick="addNumber('5')">5</button>
+    <button class="numeric-key" onclick="addNumber('6')">6</button>
+    <button class="numeric-key" onclick="addNumber('7')">7</button>
+    <button class="numeric-key" onclick="addNumber('8')">8</button>
+    <button class="numeric-key" onclick="addNumber('9')">9</button>
+    <button class="button" onclick="addNumber('x')">x</button>
+    <button class="numeric-key" onclick="addNumber('0')">0</button>
+    <button class="button.blue" onclick="resetValues()">Canc</button>
+  </div>
+  <div class="right-column">
+    <div id="itemsList"></div>
+    <div class="total" id="totalAmount"></div>
+  </div>
+  <button type="button" class="showcase-button" onclick="redirectToAreaVetrina()">Area Vetrina</button>
+</div>
+
+<script>
+  let currentCode = '';
+  let currentQuantity = 1;
+  let check = 0;
+  let currentBarcode = '';
+
+  function addNumber(value) {
+    if (value === 'x') {
+      check = 1;
+      event.preventDefault();
+      updateDisplay();
+    } else if (value >= '0' && value <= '9') {
+      if (check === 1) {
+        currentQuantity = parseInt(value);
+        check = 0;
+        updateDisplay();
+      } else {
+        currentCode += parseInt(value);
+        updateDisplay();
+      }
+    }
+  }
+
+  function addItem() {
+    if (currentCode !== '') {
+      const codeBar = parseInt(currentCode);
+      const quantity = currentQuantity;
+
+      fetch(`/getPrice?barcode=${codeBar}&quantity=${quantity}`)
+        .then(response => response.json())
+        .then(data => {
+            const price = data;
+            const total = price * quantity;
+
+            const product = {
+              barcode: codeBar,
+              quantity: quantity,
+              price: price,
+              total: total
+            };
+
+            products.push(product);
+            resetValues();
+            updateProductList();
+        })
+        .catch(error => {
+          console.log('Errore nella richiesta al server:', error);
+        });
+    }
+  }
+
+    function resetValues() {
+      currentCode = '';
+      currentQuantity = 1;
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const barcodeInput = document.getElementById('barcodeInput');
+      barcodeInput.value = currentCode + (check === 1 ? 'x' : '') + ' x ' + currentQuantity;
+    }
+
+    function updateProductList() {
+      const itemsList = document.getElementById('itemsList');
+      itemsList.innerHTML = '';
+      products.forEach(product => {
+        const item = document.createElement('p');
+        item.textContent = `${product.barcode} - Prezzo unitario: ${product.price} - Quantita': ${product.quantity}'; - Totale: ${product.total}`;
+        itemsList.appendChild(item);
+      });
+    }
+
+    function clearItemList() {
+      products.length = 0;
+      updateProductList();
+      updateTotal();
+    }
+
+    function pay() {
+    const itemDetails = products.map(product => `${product.barcode} x ${product.quantity} - ${product.total} €`).join('\n');
+
+    fetch('/pay', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        items: itemDetails
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message) {
+        const confirmationMessage = data.message;
+        const totalPrice = data.totalAmount;
+        alert(confirmationMessage + "\nPrezzo Totale: " + totalPrice);
+        resetValues();
+        clearItemList();
+      } else {
+        console.log('Errore durante il pagamento:', data.error);
+      }
+    })
+    .catch(error => {
+      console.log('Errore nella richiesta al server:', error);
+    });
+  }
+  const products = [];
+  function redirectToAreaVetrina() {
+      var badgeCode = getBadgeCodeFromURL();
+      var url = '/areaVetrina?badgeCode=' + badgeCode;
+      fetch(url, {
+          method: 'GET',
+      }).then(response => {
+          if (response.ok) {
+              var newURL = 'AreaVetrina.html?badgeCode=' + badgeCode;
+              window.location.href = newURL;
+          } else {
+              console.log('Errore nella richiesta al controller');
+          }
+      }).catch(error => {
+          console.log('Errore nella richiesta al controller', error);
+      });
+    }
+    function getBadgeCodeFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('badgeCode');
+    }
+</script>
+</body>
+</html>
