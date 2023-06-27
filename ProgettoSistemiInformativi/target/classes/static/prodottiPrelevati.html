@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inserisci prodotti prelevati</title>
+    <!-- Stili CSS e script JavaScript necessari -->
+    <style>
+        .product {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Inserisci Prodotti Prelevati</h1>
+<form id="prodottiForm">
+    <div id="productList">
+        <!--
+        <label for="codiceBarre_0">Codice a Barre:</label>
+        <input type="text" id="codiceBarre_0" name="products[0].codiceBarre" required>
+        <label for="quantita_0">Quantità:</label>
+        <input type="number" id="quantita_0" name="products[0].quantita" required>
+        -->
+    </div>
+    <div>
+        <button type="button" onclick="addProduct()">Aggiungi Prodotto</button>
+    </div>
+    <div>
+        <button type="button" onclick="submitProdotti()">Salva</button>
+        <button class="button" onclick="goBack()">Torna Indietro</button>
+    </div>
+    <input type="hidden" id="codeBadge" value="">
+</form>
+
+<script>
+    var productCount = 0;
+    var urlParams = new URLSearchParams(window.location.search);
+    var codeBadge = urlParams.get('badgeCode');
+
+    function addProduct() {
+        var productListDiv = document.getElementById('productList');
+
+        var productDiv = document.createElement('div');
+        productDiv.classList.add('product');
+        productCount++;
+        productDiv.innerHTML = `
+      <label for="codiceBarre_${productCount}">Codice a Barre:</label>
+      <input type="text" id="codiceBarre_${productCount}" name="products[${productCount}].codiceBarre" required>
+      <label for="quantita_${productCount}">Quantita':</label>
+      <input type="number" id="quantita_${productCount}" name="products[${productCount}].quantita" required>
+    `;
+
+        productListDiv.appendChild(productDiv);
+    }
+
+    function submitProdotti() {
+        if (confirm("Sei sicuro di voler salvare i prodotti?")) {
+            // Recupera il codiceBadge dall'URL
+            var urlParams = new URLSearchParams(window.location.search);
+            codeBadge = urlParams.get('badgeCode');
+
+            // Recupera i dati dei prodotti dal form
+            var productElements = document.querySelectorAll('[id^=codiceBarre]');
+            var quantityElements = document.querySelectorAll('[id^=quantita]');
+            var products = [];
+
+            for (var i = 0; i < productElements.length; i++) {
+                var codiceBarre = productElements[i].value;
+                var quantita = quantityElements[i].value;
+
+                var product = {
+                    codiceBarre: codiceBarre,
+                    quantita: quantita
+                };
+
+                products.push(product);
+            }
+
+            var data = {
+                products: products,
+                codeBadge: codeBadge
+            };
+
+            fetch('/prodottiPrelevati', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('I prodotti sono stati salvati con successo');
+                        var url = 'AreaVetrina.html?badgeCode=' + codeBadge;
+                        window.location.href = url;
+                        // Puoi eseguire azioni aggiuntive dopo il salvataggio dei prodotti
+                    } else {
+                        console.error('Errore durante il salvataggio dei prodotti');
+                    }
+                })
+                .catch(error => {
+                    console.error('Errore durante il salvataggio dei prodotti:', error);
+                });
+        }
+    }
+
+    function goBack() {
+        var url = 'AreaVetrina.html?badgeCode=' + codeBadge;
+        window.location.href = url;
+    }
+
+    // Aggiungi un prodotto predefinito all'avvio della pagina
+    window.addEventListener('DOMContentLoaded', function () {
+        addProduct();
+    });
+</script>
+</body>
+</html>
