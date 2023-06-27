@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nuovo Prodotto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #3e8e41;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function addProduct(event) {
+      event.preventDefault();
+
+      var badgeCode = getBadgeCodeFromURL();
+      var productCode = document.getElementById('barcode').value;
+      var price = document.getElementById('price').value;
+      var quantity = document.getElementById('quantity').value;
+      var minThreshold = document.getElementById('min').value;
+      var maxThreshold = document.getElementById('max').value;
+
+      if (productCode && price && quantity && minThreshold && maxThreshold) {
+        var confirmation = confirm("Confermi di voler salvare il prodotto?");
+        if (confirmation) {
+          var url = '/inserisci_prodotto?badgeCode=' + encodeURIComponent(badgeCode) +
+            '&barCode=' + encodeURIComponent(productCode) +
+            '&price=' + encodeURIComponent(price) +
+            '&quantity=' + encodeURIComponent(quantity) +
+            '&min=' + encodeURIComponent(minThreshold) +
+            '&max=' + encodeURIComponent(maxThreshold);
+
+          fetch(url, {
+            method: 'POST'
+          })
+            .then(response => {
+              if (response.ok) {
+                console.log('Prodotto salvato con successo');
+                var redirectUrl = 'elencoProdotti.html?badgeCode=' + badgeCode;
+                window.location.href = redirectUrl;
+              } else {
+                console.error('Errore durante il salvataggio del prodotto');
+              }
+            })
+            .catch(error => {
+              console.error('Errore durante la richiesta di salvataggio del prodotto:', error);
+            });
+        }
+      } else {
+        alert("Completa tutti i campi prima di salvare il prodotto.");
+      }
+    }
+
+    function redirectToElencoProdotti() {
+      var badgeCode = getBadgeCodeFromURL();
+      var url = 'elencoProdotti.html?badgeCode=' + badgeCode;
+      window.location.href = url;
+    }
+
+    function getBadgeCodeFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('badgeCode');
+    }
+  </script>
+</head>
+<body>
+<h1>Aggiungi un nuovo Prodotto</h1>
+<form id="productForm">
+  <label for="barcode">Codice a barre:</label>
+  <input type="text" id="barcode" name="barcode" required><br>
+  <label for="price">Prezzo:</label>
+  <input type="number" id="price" name="price" step="0.01" required><br>
+  <label for="quantity">Quantità:</label>
+  <input type="number" id="quantity" name="quantity" required><br>
+  <label for="min">Soglia minima:</label>
+  <input type="number" id="min" name="min" required><br>
+  <label for="max">Soglia massima:</label>
+  <input type="number" id="max" name="max" required><br>
+  <button type="submit" onclick="addProduct(event)">Salva</button>
+  <button type="button" onclick="redirectToElencoProdotti()">Torna Indietro</button>
+</form>
+</body>
+</html>
+

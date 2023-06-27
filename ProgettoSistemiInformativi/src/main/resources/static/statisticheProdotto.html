@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Statistiche prodotto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .product-list {
+      margin-left: 20px;
+      padding-left: 20px;
+      border-left: 1px solid #ccc;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<h1>Statistiche prodotto</h1>
+<button type="button" onclick="redirectToProductDetails()">Torna Indietro</button>
+<ul id="salesList"></ul>
+
+<script>
+    function redirectToProductDetails() {
+      var productId = getProductIdFromURL();
+      var badgeCode = getBadgeCodeFromURL();
+      var url = 'dettagli-prodotto.html?badgeCode=' + badgeCode + '&productId=' + productId;
+      window.location.href = url;
+    }
+
+    function getBadgeCodeFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('badgeCode');
+    }
+    function getProductIdFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('productId');
+    }
+  const productId = getProductIdFromURL();
+  const url = new URL('/statisticheProdotto', window.location.origin);
+  url.searchParams.append('productId', productId);
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      const salesData = Object.values(data);
+
+      if (salesData) {
+        salesData.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+        const salesList = document.getElementById("salesList");
+
+        // Itera sugli elementi dell'oggetto JSON
+        salesData.forEach(sale => {
+          const listItem = document.createElement("li");
+
+          // Formatta la data nel formato "dd-mm-yyyy"
+          const date = new Date(sale.data);
+          const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+
+          // Creazione dell'elemento di lista per la vendita
+          const saleItem = document.createElement("div");
+          saleItem.textContent = `Data: ${formattedDate}`;
+          listItem.appendChild(saleItem);
+
+          // Decodifica il campo scontrino come JSON
+          const scontrinoData = JSON.parse(sale.scontrino);
+
+          // Creazione dell'elemento di lista per i prodotti acquistati
+          const productList = document.createElement("ul");
+          productList.className = "product-list";
+
+          const items = scontrinoData.items.split("\n");
+          items.forEach(item => {
+            const itemData = item.split(" - ");
+            //const [code, quantity, price] = itemData[0].split(" x ");
+            const prova = itemData[0].split("x");
+            const code = prova[0];
+            const quantity = prova[1];
+            const prova2 = itemData[1].split("â");
+            const aux = prova2[0].split(" ");
+            const price = aux[0];
+            const productItem = document.createElement("li");
+            productItem.textContent = `${code} x ${quantity} : ${price}`;
+            productList.appendChild(productItem);
+          });
+          listItem.appendChild(productList);
+
+          // Creazione dell'elemento di lista per il totale
+          const totalItem = document.createElement("div");
+          totalItem.textContent = `Totale = ${sale.prezzoTotale}`;
+          listItem.appendChild(totalItem);
+
+          salesList.appendChild(listItem);
+        });
+      }
+    });
+</script>
+</body>
+</html>
